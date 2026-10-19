@@ -1,0 +1,3 @@
+[submodule "MTGTool"]
+	path = MTGTool
+	url = https://github.com/SaydRomey/MTGTool.git
