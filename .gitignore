@@ -1,0 +1,12 @@
+# Compressed archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.dmg
+*.iso
+*.jar
+
+# Ignore all .ini files
+*.ini
