@@ -29,7 +29,7 @@
 - [Code for the color frame test prototype][color-frame-prototype-html]
 
 [color-frame-prototype-launch]: https://saydromey.github.io/LDJ/Features/_prototypes/LDJ_Frame_Color_Preview.html  
-[color-frame-prototype-html]: _pritotypes/LDJ_Frame_Color_Preview.html
+[color-frame-prototype-html]: _prototypes/LDJ_Frame_Color_Preview.html
 
 ---
 
