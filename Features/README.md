@@ -26,9 +26,10 @@
 ## Design Tools
 
 ### [Color Frame Prototype][color-frame-prototype-launch]
-- [Launch the color frame test prototype][color-frame-prototype-launch]
+- [Code for the color frame test prototype][color-frame-prototype-html]
 
 [color-frame-prototype-launch]: https://saydromey.github.io/LDJ/Features/_prototypes/LDJ_Frame_Color_Preview.html  
+[color-frame-prototype-html]: _pritotypes/LDJ_Frame_Color_Preview.html
 
 ---
 
