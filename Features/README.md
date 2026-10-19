@@ -28,7 +28,7 @@
 ### [Color Frame Prototype][color-frame-prototype-launch]
 - [Launch the color frame test prototype][color-frame-prototype-launch]
 
-[color-frame-prototype-launch]: https://saydromey.github.io/LDJ/Features/prototypes/LDJ_Frame_Color_Preview.html  
+[color-frame-prototype-launch]: https://saydromey.github.io/LDJ/Features/_prototypes/LDJ_Frame_Color_Preview.html  
 
 ---
 
