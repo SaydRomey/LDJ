@@ -1,0 +1,294 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0c1325">
+    <title>LDJ Card Maker — Offline Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="top">
+        <div class="brand">
+            <div class="brandicon">LDJ</div>
+            <div>
+                <h1>LDJ Card Maker</h1>
+                <small>Create custom cards with the LDJ frame</small>
+            </div>
+        </div>
+        <div class="topright">
+            <b>OFFLINE PROTOTYPE</b>
+            · 63 &times; 88 mm · v1.0
+        </div>
+    </header>
+    <main class="shell">
+        <section class="editor" aria-label="Card editor">
+            <div class="editorHead">
+                <div class="eyebrow">Create your card</div>
+                <h2>Card editor</h2>
+                <p>Choose your frame, add artwork, and write your card. The preview updates instantly.</p>
+            </div>
+            <div class="formBody">
+                <div class="section">
+                    <h3><span>01</span> Start here</h3>
+                    <div class="field">
+                        <label for="preset">Example or blank template</label>
+                        <select id="preset">
+                            <option value="council">Council of Juliens — sample</option>
+                            <option value="mother">Mother's Veto — sample</option>
+                            <option value="blank">Blank LDJ card</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3><span>02</span> Card identity</h3>
+                    <div class="field">
+                        <label for="cardName">Card name</label>
+                        <input id="cardName" maxlength="100" value="Council of Juliens">
+                    </div>
+                    <div class="field">
+                        <label for="mana">Mana cost</label>
+                        <input id="mana" spellcheck="false" value="{2}{U}" placeholder="{2}{U} or {1}{W}{U}">
+                        <div class="manaActions" aria-label="Insert mana symbol">
+                            <button class="pipBtn pip-X" data-mana="0" title="0">0</button>
+                            <button class="pipBtn pip-X" data-mana="1" title="1">1</button>
+                            <button class="pipBtn pip-X" data-mana="2" title="2">2</button>
+                            <button class="pipBtn pip-W" data-mana="W" title="White">W</button>
+                            <button class="pipBtn pip-U" data-mana="U" title="Blue">U</button>
+                            <button class="pipBtn pip-B" data-mana="B" title="Black">B</button>
+                            <button class="pipBtn pip-R" data-mana="R" title="Red">R</button>
+                            <button class="pipBtn pip-G" data-mana="G" title="Green">G</button>
+                            <button class="pipBtn pip-C" data-mana="C" title="Colorless">C</button>
+                            <button class="pipBtn pip-X" data-mana="X" title="Variable">X</button>
+                            <button class="miniButton" id="manaUndo" title="Remove last symbol">Undo</button>
+                        </div>
+                        <small>Tap mana symbols above, or enter codes such as {1}{W/U}{U}.</small>
+                    </div>
+                    <div class="field">
+                        <label for="typeLine">Type line</label>
+                        <input id="typeLine" value="Enchantment — Aura" placeholder="Creature — Human Wizard">
+                    </div>
+                    <div class="pair">
+                        <div class="field">
+                            <label for="frame">Frame color</label>
+                            <select id="frame">
+                                <option value="auto">Auto · from mana</option>
+                                <option value="white">White</option>
+                                <option value="blue">Blue</option>
+                                <option value="black">Black</option>
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="multi">Multicolor · Gold</option>
+                                <option value="azorius">White / Blue</option>
+                                <option value="colorless">Colorless</option>
+                                <option value="artifact">Artifact</option>
+                                <option value="land">Land</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="rarity">Rarity</label>
+                            <select id="rarity">
+                                <option value="common">Common · black</option>
+                                <option value="uncommon">Uncommon · silver</option>
+                                <option selected="" value="rare">Rare · gold</option>
+                                <option value="mythic">Mythic · orange</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="pair">
+                        <div class="field">
+                            <label for="badgeStyle">LDJ badge</label>
+                            <select id="badgeStyle">
+                                <option value="laurel">Laurel crest</option>
+                                <option value="minimal">Simple LDJ emblem</option>
+                                <option value="none">No badge</option>
+                                <option value="custom">Upload custom badge</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="setCode">Set code</label>
+                            <input id="setCode" value="LDJ" maxlength="9">
+                        </div>
+                    </div>
+                    <div class="field" id="customBadgeField" hidden="">
+                        <label for="badgeFile">Custom transparent PNG badge</label>
+                        <input type="file" id="badgeFile" accept="image/*">
+                        <small>Transparent PNG works best; the badge replaces the LDJ laurel.</small>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3><span>03</span> Artwork</h3>
+                    <label class="fileDrop"><span class="uploadIcon">▧</span><span><strong>Choose an image to
+                                upload</strong><small>JPG, PNG, WebP — crop it using the controls
+                                below</small></span><input accept="image/*" aria-label="Upload card artwork"
+                            id="artFile" type="file" /></label>
+                    <div class="buttonRow">
+                        <button class="miniButton" id="removeArt">Remove artwork</button>
+                        <button class="miniButton" id="resetCrop">Center artwork</button>
+                    </div>
+                    <div class="field" style="margin-top:14px">
+                        <div class="rangeLabel">
+                            <label for="zoom">Image zoom</label>
+                            <output id="zoomOut">100%</output>
+                        </div>
+                        <input type="range" id="zoom" min="100" max="280" step="1" value="100">
+                    </div>
+                    <div class="pair">
+                        <div class="field">
+                            <div class="rangeLabel">
+                                <label for="panX">Move left / right</label>
+                                <output id="panXOut">0</output>
+                            </div>
+                            <input type="range" id="panX" min="-100" max="100" value="0">
+                        </div>
+                        <div class="field">
+                            <div class="rangeLabel">
+                                <label for="panY">Move up / down</label>
+                                <output id="panYOut">0</output>
+                            </div>
+                            <input type="range" id="panY" min="-100" max="100" value="0">
+                        </div>
+                    </div>
+                    <small class="hint">The initial art is cropped from your LDJ sample card. Upload any image to
+                        replace it.</small>
+                </div>
+                <div class="section">
+                    <h3><span>04</span> Card text</h3>
+                    <div class="field">
+                        <label for="rules">Rules text</label>
+                        <textarea id="rules" rows="6" spellcheck="true">This spell can't be countered.
+Enchant creature
+Enchanted creature loses its name and is named Julien.
+Whenever a player says “which Julien?”, draw a card, then discard a card.</textarea>
+                        <small>Separate abilities with line breaks. The font adapts to the available box.</small>
+                    </div>
+                    <div class="field">
+                        <label for="flavor">Flavor text <span class="muted">(italic)</span></label>
+                        <textarea id="flavor" rows="3">By unanimous decree, another Julien joins the pod.</textarea>
+                    </div>
+                    <div class="pair">
+                        <div class="field">
+                            <label for="statsMode">Bottom-right stat</label>
+                            <select id="statsMode">
+                                <option value="none">None</option>
+                                <option value="pt">Power / toughness</option>
+                                <option value="loyalty">Loyalty</option>
+                                <option value="defense">Defense</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="fontScale">Text size</label>
+                            <select id="fontScale">
+                                <option value="auto">Auto-fit</option>
+                                <option value="compact">Compact</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="pair" id="ptFields" hidden="">
+                        <div class="field">
+                            <label for="power">Power</label>
+                            <input id="power" value="3" maxlength="5">
+                        </div>
+                        <div class="field">
+                            <label for="toughness">Toughness</label>
+                            <input id="toughness" value="4" maxlength="5">
+                        </div>
+                    </div>
+                    <div class="field" id="singleStatField" hidden="">
+                        <label for="singleStat">Starting value</label>
+                        <input id="singleStat" value="4" maxlength="5">
+                    </div>
+                </div>
+                <div class="section">
+                    <h3><span>05</span> Set &amp; footer</h3>
+                    <div class="pair">
+                        <div class="field">
+                            <label for="collector">Collector number</label>
+                            <input id="collector" value="026/100" maxlength="25">
+                        </div>
+                        <div class="field">
+                            <label for="language">Language</label>
+                            <select id="language">
+                                <option>EN</option>
+                                <option>FR</option>
+                                <option>ES</option>
+                                <option>DE</option>
+                                <option>IT</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="artist">Artist credit</label>
+                        <input id="artist" value="J. Ulien" maxlength="60">
+                    </div>
+                    <div class="pair">
+                        <div class="field">
+                            <label for="copyright">Copyright name</label>
+                            <input id="copyright" value="Lizards of the Toast" maxlength="80">
+                        </div>
+                        <div class="field">
+                            <label for="year">Year</label>
+                            <input id="year" inputmode="numeric" value="2026" maxlength="4">
+                        </div>
+                    </div>
+                    <label class="switchRow"><input checked="" id="anniversary" type="checkbox" />Show LDJ 5-year
+                        anniversary emblem</label>
+                </div>
+                <div class="collapseHelp">
+                    <strong>Quick guide.</strong>
+                    <p>
+                        Upload artwork, choose rarity and type, then export your PNG.
+                        You can also save an editable <strong>.json</strong> file and reopen it later.
+                        Everything runs in your browser; uploads are not sent to a server.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="previewColumn" aria-label="Card preview">
+            <div class="previewPanel">
+                <div class="previewHead">
+                    <div>
+                        <div class="eyebrow">Live renderer</div>
+                        <h2>Card preview</h2>
+                        <p>LDJ custom frame · card dimensions 63 &times; 88 mm</p>
+                    </div>
+                    <span class="status"><span class="dot"></span>Live</span>
+                </div>
+                <div class="canvasWrap">
+                    <canvas aria-label="Rendered preview of your custom LDJ card" height="1760" id="cardCanvas"
+                        role="img" width="1260"></canvas>
+                </div>
+                <div class="previewControls">
+                    <button class="actionBtn primary" id="pngButton">↓ Download PNG</button>
+                    <button class="actionBtn" id="saveButton">Save editable card</button>
+                    <button class="actionBtn" id="loadButton">Open saved card</button>
+                    <button class="actionBtn" id="printButton">Print / PDF</button>
+                    <input type="file" id="loadJson" accept=".json,application/json" hidden="">
+                </div>
+                <div class="caption">
+                    <p>
+                        PNG exports at approximately 600-DPI-equivalent pixel dimensions (1,488 &times; 2,079).
+                        For physical prints, set the output to <b>63 &times; 88 mm</b> and print at 100% scale.
+                        This is unofficial LDJ fan-card artwork, not an official Magic card.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <strong>LDJ Card Maker v1.0.</strong>
+        <p>
+            Single-file offline prototype.
+            Artwork files remain on your device unless you choose to export or share a card.
+            The frame takes design inspiration from the LDJ references provided in this conversation.
+        </p>
+    </footer>
+    <div id="notice" class="notice" role="status"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
