@@ -28,8 +28,15 @@
 ### [Color Frame Prototype][color-frame-prototype-launch]
 - [Code for the color frame test prototype][color-frame-prototype-html]
 
+### [Color Frame Prototype V2 - Dual Color Frames][color-frame-prototype-v2-launch]
+- [Code for the color frame test prototype][color-frame-prototype-v2-html]
+
 [color-frame-prototype-launch]: https://saydromey.github.io/LDJ/Features/_prototypes/LDJ_Frame_Color_Preview.html  
 [color-frame-prototype-html]: _prototypes/LDJ_Frame_Color_Preview.html
+
+[color-frame-prototype-v2-launch]: https://saydromey.github.io/LDJ/Features/_prototypes/LDJ_Frame_Color_Preview_v2-hybrid.html  
+[color-frame-prototype-v2-html]: _prototypes/LDJ_Frame_Color_Preview_v2-hybrid.html
+
 
 ---
 
