@@ -3,7 +3,7 @@
 
 <div align="right">
 
-[Go to LDG's main README](../README.md)
+[Go to LDJ's main README](../README.md)
 
 
 </div>
